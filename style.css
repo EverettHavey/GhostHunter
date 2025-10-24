@@ -1,0 +1,96 @@
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #0d1117; /* Dark, spooky background */
+    color: #e6e6e6;
+    text-align: center;
+}
+
+.meter-container {
+    border: 3px solid #6c757d;
+    padding: 30px;
+    border-radius: 15px;
+    background-color: #161b22;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.4); /* Green glow */
+    max-width: 400px;
+    width: 90%;
+}
+
+h1 {
+    color: #00ff00; /* Neon green text */
+    text-transform: uppercase;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.display-box {
+    background-color: #24292e;
+    border: 2px solid #00ff00;
+    padding: 15px 10px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    min-height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#reading {
+    font-size: 3.5em;
+    font-weight: bold;
+    color: #00ff00;
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+    transition: color 0.5s ease-in-out; /* Smooth color change */
+}
+
+.unit {
+    font-size: 1.2em;
+    color: #00cc00;
+    margin-left: 10px;
+}
+
+/* --- Status Lights (LEDs) --- */
+
+.status-light-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.status-light {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #444; /* Off state */
+    border: 2px solid #333;
+    transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.status-light.active {
+    border: 2px solid #fff; /* Active border for better visibility */
+}
+
+.green.active {
+    background-color: #00ff00;
+    box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+}
+
+.yellow.active {
+    background-color: #ffff00;
+    box-shadow: 0 0 10px #ffff00, 0 0 20px #ffff00;
+}
+
+.red.active {
+    background-color: #ff0000;
+    box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+}
+
+.instruction {
+    margin-top: 30px;
+    color: #6c757d;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulated EMF Meter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="meter-container">
+        <h1>EMF Field Detector</h1>
+        <div class="display-box">
+            <span id="reading">0.0</span>
+            <span class="unit">mG</span>
+        </div>
+        
+        <div class="status-light-container">
+            <div id="led-green" class="status-light green active"></div>
+            <div id="led-yellow" class="status-light yellow"></div>
+            <div id="led-red" class="status-light red"></div>
+        </div>
+
+        <p class="instruction">
+            <small>NOTE: This is a simulation for entertainment.</small>
+        </p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
