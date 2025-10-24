@@ -4,15 +4,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const yellowLed = document.getElementById('led-yellow');
     const redLed = document.getElementById('led-red');
     
+    // --- UPDATED CONSTANTS FOR A HIGHER BASE READING ---
+    const INITIAL_BASE_READING = 1.5; // Start the meter in the high-green range
+    const BASE_FLUCTUATION = 0.5; // Normal background noise fluctuation
+    const GHOST_EFFECT_MAX = 10.0; // Max reading when 'ghost' is active
+    
     // Initial base reading for the 'background' EMF noise
-    let currentReading = 0.5; 
+    let currentReading = INITIAL_BASE_READING; 
     
     // Variables for the simulated 'Ghost' event
     let ghostNearby = false;
     let ghostIntensity = 0; // How strong the simulated 'ghost' signal is
-    
-    const BASE_FLUCTUATION = 0.5; // Normal background noise fluctuation
-    const GHOST_EFFECT_MAX = 10.0; // Max reading when 'ghost' is active
     
     function updateMeter() {
         let fluctuation;
@@ -20,7 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // 1. Simulate Normal EMF Fluctuation
         // Add a small random change (positive or negative) to the base reading
         fluctuation = (Math.random() * BASE_FLUCTUATION) - (BASE_FLUCTUATION / 2);
-        currentReading = Math.max(0, currentReading + fluctuation * 0.1); // Keep reading non-negative
+        
+        // Update the reading, but ensure it always stays above a minimum (e.g., 1.0)
+        currentReading = Math.max(1.0, currentReading + fluctuation * 0.1); 
         
         // 2. Simulate 'Ghost' Effect
         if (ghostNearby) {
@@ -46,12 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
         greenLed.classList.remove('active');
         yellowLed.classList.remove('active');
         redLed.classList.remove('active');
+        readingElement.style.textShadow = 'none'; // Reset flicker
         
         // Reset color
         readingElement.style.color = '#00ff00'; // Default green
         
+        // --- KEY CHANGE: GREEN REMAINS ACTIVE BETWEEN 1.0 AND 2.0 mG ---
         if (reading < 2.0) {
-            // Low/Normal reading
+            // Low/Normal reading (will be active constantly due to INITIAL_BASE_READING)
             greenLed.classList.add('active');
             
         } else if (reading >= 2.0 && reading < 5.0) {
